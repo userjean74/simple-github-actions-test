@@ -9,10 +9,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t simple-test .
+        run: docker build -t simple-github-actions-test .
 
       - name: Run tests
-        run: docker run --rm simple-test
+        run: docker run --rm simple-github-actions-test npm test
+
+      - name: Start application
+        run: |
+          docker run -d \
+            --name simple-github-actions-test \
+            -p 3000:3000 \
+            simple-github-actions-test
+
+      - name: Wait for application
+        run: sleep 3
+
+      - name: Test application
+        run: curl --fail http://localhost:3000/
+
+      - name: Show container logs
+        if: always()
+        run: docker logs simple-github-actions-test
+
+      - name: Stop container
+        if: always()
+        run: docker stop simple-github-actions-test || true
