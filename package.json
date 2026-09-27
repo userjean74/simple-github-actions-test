@@ -1,0 +1,20 @@
+{
+  "name": "simple-github-actions-test",
+  "version": "1.0.0",
+  "description": "Simple GitHub Actions example",
+  "main": "test.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/userjean74/simple-github-actions-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/userjean74/simple-github-actions-test/issues"
+  },
+  "homepage": "https://github.com/userjean74/simple-github-actions-test#readme"
+}
